@@ -19,6 +19,8 @@ public class Player implements IPlayer {
     private String name;
     private PlayerType type;
 
+    private int rounds;
+
     /**
      * @param name
      */
@@ -49,48 +51,60 @@ public class Player implements IPlayer {
     @Override
     public Move doMove(IGameState state) {
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+        roundLostCounter(results);
+
         // Count the number of times the human player has chosen each move in the last two rounds
         int rockCount = 0;
         int paperCount = 0;
-        int scissorCount = 0;
-        for (int i = results.size() - 1; i >= Math.max(0, results.size() - 1); i--) {
+        for (int i = 0; i < results.size(); i++) {
             Result result = results.get(i);
             PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
-            if(getPlayerType() == loserChecker){
-            if(result.getWinnerMove().equals(Move.Rock)) {
-                rockCount++;
-            }
-            else if (result.getWinnerMove().equals(Move.Scissor)) {
-                scissorCount++;
-            }
-            else {
-                paperCount++;
+            if (getPlayerType() == loserChecker) {
+                if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Rock)) {
+                    rockCount++;
+                } else if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Paper)) {
+                    paperCount++;
+                } else {
+                    // Do Nothing...
                 }
             }
         }
-        int rockPercentage = results.size()/100 * rockCount;
-        int paperPercentage = results.size()/100 * paperCount;
-        int scissorPercentage = results.size()/100 * scissorCount;
+        Random random = new Random();
+        int rando = random.nextInt(1, 100);
+        if (results.size() > 10) {
+            int rockPercentage = 100 / rounds * rockCount;
+            int paperPercentage = 100 / rounds * paperCount;
 
-        // Use the human player's move history to make a more informed decision
-        if (rockCount >= 2) {
-            return Move.Paper;
-        } else if (paperCount >= 2) {
-            return Move.Scissor;
-        } else if (scissorCount >= 2) {
-            return Move.Rock;
-        } else {
-            // Choose a move randomly with equal probability
-            Random random = new Random();
-            int randomMove = random.nextInt(3);
-            if (randomMove == 0) {
-                return Move.Rock;
-            } else if (randomMove == 1) {
+            if (rando < rockPercentage) {
                 return Move.Paper;
+            } else if (rando < rockPercentage + paperPercentage) {
+                return Move.Rock;
             } else {
                 return Move.Scissor;
             }
+        } else {
+            return randomMove();
+        }
+    }
+
+    private void roundLostCounter(ArrayList<Result> results) {
+        rounds = 0;
+        for (Result result : results) {
+            if (result.getLoserPlayer().equals(this)) {
+                rounds++;
+            }
+        }
+    }
+
+    private Move randomMove() {
+        Random random1 = new Random();
+        int move = random1.nextInt(3);
+        if (move == 0) {
+            return Move.Paper;
+        } else if (move == 1) {
+            return Move.Scissor;
+        } else {
+            return Move.Rock;
         }
     }
 }
-

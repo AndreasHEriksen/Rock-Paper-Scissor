@@ -37,16 +37,20 @@ public class GameViewController implements Initializable {
     private boolean paperChosen;
     private boolean scissorChosen;
     public Move chosenMove;
+    private IPlayer human;
 
+    private IPlayer bot;
+    private GameManager ge;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
-
+        String playerName = "Player";
+        human = new Player(playerName, PlayerType.Human);
+        bot = new Player(getRandomBotName(), PlayerType.AI);
+        ge = new GameManager(human, bot);
     }
 
     public void handleChooseRock(ActionEvent actionEvent) {
@@ -90,15 +94,9 @@ public class GameViewController implements Initializable {
     private int playerWins = 0;
 
     public void playGame(Move chosenMove){
-        String playerName = "Player";
-
-        IPlayer human = new Player(playerName, PlayerType.Human);
-        IPlayer bot = new Player(getRandomBotName(), PlayerType.AI);
-        GameManager ge = new GameManager(human, bot);
         Result result = ge.playRound(chosenMove);
         String resultString = getResultAsString(result);
         System.out.println(resultString);
-
         if (result.getType() == ResultType.Win && result.getWinnerPlayer().getPlayerType() == PlayerType.AI) {
             botWins++;
             txtBotWins.setText(Integer.toString(botWins));

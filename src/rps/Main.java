@@ -19,15 +19,9 @@ public class Main {
     public static void main(String[] args)
     {
         //Console version
-        startRPSConsoleGame();
-
+        //startRPSConsoleGame();
         //JavaFX version
-<<<<<<< HEAD
-        //startRPSJavaFXGame();
-=======
         startRPSJavaFXGame();
-
->>>>>>> e0b8d420ec47cf87be470751764c32b7094949b9
     }
 
     /**
