@@ -3,6 +3,8 @@ package rps.gui.controller;
 // Java imports
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import rps.bll.game.GameManager;
 import rps.bll.game.Move;
 import rps.bll.player.IPlayer;
@@ -18,6 +20,10 @@ import java.util.ResourceBundle;
  * @author smsj
  */
 public class GameViewController implements Initializable {
+    public Text txtPlayerWins;
+    public Text txtBotWins;
+    public Label lblPlayerWins;
+    public Label lblBotWins;
     private boolean rockChosen;
     private boolean paperChosen;
     private boolean scissorChosen;
