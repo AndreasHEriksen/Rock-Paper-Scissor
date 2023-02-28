@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import rps.bll.game.GameManager;
 import rps.bll.game.Move;
@@ -15,6 +17,7 @@ import rps.bll.player.Player;
 import rps.bll.player.PlayerType;
 
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -23,6 +26,8 @@ import java.util.ResourceBundle;
  * @author smsj
  */
 public class GameViewController implements Initializable {
+    public ImageView imgPlayer;
+    public ImageView imgBot;
     @FXML private Text txtBotWins;
     @FXML
     private Text txtPlayerWins;
@@ -49,6 +54,10 @@ public class GameViewController implements Initializable {
 
         chosenMove = Move.Rock;
         getMove();
+        Image image = new Image("rps/gui/Images/boulder_png_by_davidrabinstock_dbl9pdg-pre.png");
+        imgPlayer.setImage(image);
+
+
         playGame(chosenMove);
     }
 
@@ -57,6 +66,8 @@ public class GameViewController implements Initializable {
 
         chosenMove = Move.Paper;
         getMove();
+        Image image = new Image("rps/gui/Images/pngtree-torn-notebook-paper-white-coil-png-image_5317122.png");
+        imgPlayer.setImage(image);
         playGame(chosenMove);
     }
 
@@ -65,6 +76,8 @@ public class GameViewController implements Initializable {
 
         chosenMove = Move.Scissor;
         getMove();
+        Image image = new Image("rps/gui/Images/scissors_PNG15.png");
+        imgPlayer.setImage(image);
         playGame(chosenMove);
     }
 
