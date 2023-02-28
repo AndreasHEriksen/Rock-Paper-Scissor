@@ -49,21 +49,28 @@ public class Player implements IPlayer {
     @Override
     public Move doMove(IGameState state) {
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
-
         // Count the number of times the human player has chosen each move in the last two rounds
         int rockCount = 0;
         int paperCount = 0;
         int scissorCount = 0;
-        for (int i = results.size() - 1; i >= Math.max(0, results.size() - 2); i--) {
+        for (int i = results.size() - 1; i >= Math.max(0, results.size() - 1); i--) {
             Result result = results.get(i);
-            if (result.getLoserMove().equals("Rock")) {
+            PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
+            if(getPlayerType() == loserChecker){
+            if(result.getWinnerMove().equals(Move.Rock)) {
                 rockCount++;
-            } else if (result.getLoserMove().equals("Paper")) {
-                paperCount++;
-            } else if (result.getLoserMove().equals("Scissor")) {
+            }
+            else if (result.getWinnerMove().equals(Move.Scissor)) {
                 scissorCount++;
             }
+            else {
+                paperCount++;
+                }
+            }
         }
+        int rockPercentage = results.size()/100 * rockCount;
+        int paperPercentage = results.size()/100 * paperCount;
+        int scissorPercentage = results.size()/100 * scissorCount;
 
         // Use the human player's move history to make a more informed decision
         if (rockCount >= 2) {
