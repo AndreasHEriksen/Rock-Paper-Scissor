@@ -7,6 +7,7 @@ import rps.bll.game.Result;
 
 //Java imports
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Example implementation of a player.
@@ -41,6 +42,7 @@ public class Player implements IPlayer {
 
     /**
      * Decides the next move for the bot...
+     *
      * @param state Contains the current game state including historic moves/results
      * @return Next move
      */
@@ -49,7 +51,15 @@ public class Player implements IPlayer {
         //Historic data to analyze and decide next move...
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
 
-        //Implement better AI here...
-        return Move.Rock;
+        Random randomMove = new Random();
+        int nextMove = randomMove.nextInt(3);
+        if (nextMove == 0) {
+            return Move.Rock;
+        } else if (nextMove == 1) {
+            return Move.Paper;
+        }
+        else{
+            return Move.Scissor;
+        }
     }
 }
