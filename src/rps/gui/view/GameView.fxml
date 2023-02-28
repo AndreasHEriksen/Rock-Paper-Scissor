@@ -14,8 +14,8 @@
       <Button layoutX="141.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleChoosePaper" text="Paper" />
       <Button layoutX="261.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleChooseScissor" text="Scissor" />
       <Label layoutX="386.0" layoutY="137.0" text="vs" />
-      <Text fx:id="txtPlayerWins" layoutX="486.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="txtBotWins" layoutX="636.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="txtPlayerWins" layoutX="503.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="22.13671875" />
+      <Text fx:id="txtBotWins" layoutX="636.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Label fx:id="lblPlayerWins" layoutX="483.0" layoutY="320.0" text="Player Wins" />
       <Label fx:id="lblBotWins" layoutX="633.0" layoutY="320.0" text="Bot Wins" />
    </children>

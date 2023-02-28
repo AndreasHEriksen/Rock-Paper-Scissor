@@ -23,6 +23,7 @@ public class Main {
 
         //JavaFX version
         startRPSJavaFXGame();
+
     }
 
     /**
@@ -30,7 +31,10 @@ public class Main {
      */
     private static void startRPSJavaFXGame() {
         JavaFXApp.launch();
+
     }
+
+
 
     /**
      * Start a console version of the game

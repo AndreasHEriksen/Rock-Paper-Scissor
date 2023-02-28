@@ -2,6 +2,7 @@ package rps.gui.controller;
 
 // Java imports
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
@@ -22,8 +23,9 @@ import java.util.ResourceBundle;
  * @author smsj
  */
 public class GameViewController implements Initializable {
-    public Text txtPlayerWins;
-    public Text txtBotWins;
+    @FXML private Text txtBotWins;
+    @FXML
+    private Text txtPlayerWins;
     public Label lblPlayerWins;
     public Label lblBotWins;
     private boolean rockChosen;
@@ -70,15 +72,27 @@ public class GameViewController implements Initializable {
 
         return chosenMove;
     }
+
+    private int botWins = 0;
+    private int playerWins = 0;
+
     public void playGame(Move chosenMove){
         String playerName = "Player";
 
         IPlayer human = new Player(playerName, PlayerType.Human);
         IPlayer bot = new Player(getRandomBotName(), PlayerType.AI);
         GameManager ge = new GameManager(human, bot);
-        ge.playRound(chosenMove);
-        getResultAsString(ge.playRound(chosenMove));
-        System.out.println(getResultAsString(ge.playRound(chosenMove)));
+        Result result = ge.playRound(chosenMove);
+        String resultString = getResultAsString(result);
+        System.out.println(resultString);
+
+        if (result.getType() == ResultType.Win && result.getWinnerPlayer().getPlayerType() == PlayerType.AI) {
+            botWins++;
+            txtBotWins.setText(Integer.toString(botWins));
+        } else if (result.getType() == ResultType.Win && result.getWinnerPlayer().getPlayerType() == PlayerType.Human) {
+            playerWins++;
+            txtPlayerWins.setText(Integer.toString(playerWins));
+        }
     }
 
     private String getRandomBotName() {
