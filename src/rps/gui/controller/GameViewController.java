@@ -41,9 +41,9 @@ public class GameViewController implements Initializable {
 
     private IPlayer bot;
     private GameManager ge;
-    private Image imageRock = new Image("rps/gui/Images/boulder_png_by_davidrabinstock_dbl9pdg-pre.png");
-    private Image imagePaper = new Image("rps/gui/Images/pngtree-torn-notebook-paper-white-coil-png-image_5317122.png");
-    private Image imageScissor = new Image("rps/gui/Images/scissors_PNG15.png");
+    private Image imageRock = new Image("rps/gui/Images/Rock.png");
+    private Image imagePaper = new Image("rps/gui/Images/Paper.png");
+    private Image imageScissor = new Image("rps/gui/Images/Scissor.png");
 
     /**
      * Initializes the controller class.
