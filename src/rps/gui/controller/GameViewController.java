@@ -60,9 +60,8 @@ public class GameViewController implements Initializable {
         rockChosen = true;
 
         chosenMove = Move.Rock;
-        getMove();
-        Image image = new Image("rps/gui/Images/boulder_png_by_davidrabinstock_dbl9pdg-pre.png");
-        imgPlayer.setImage(image);
+
+        imgPlayer.setImage(imageRock);
 
 
         playGame(chosenMove);
@@ -72,9 +71,7 @@ public class GameViewController implements Initializable {
         paperChosen = true;
 
         chosenMove = Move.Paper;
-        getMove();
-        Image image = new Image("rps/gui/Images/pngtree-torn-notebook-paper-white-coil-png-image_5317122.png");
-        imgPlayer.setImage(image);
+        imgPlayer.setImage(imagePaper);
         playGame(chosenMove);
     }
 
@@ -82,9 +79,7 @@ public class GameViewController implements Initializable {
         scissorChosen = true;
 
         chosenMove = Move.Scissor;
-        getMove();
-        Image image = new Image("rps/gui/Images/scissors_PNG15.png");
-        imgPlayer.setImage(image);
+        imgPlayer.setImage(imageScissor);
         playGame(chosenMove);
 
     }
