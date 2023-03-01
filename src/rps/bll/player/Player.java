@@ -42,6 +42,15 @@ public class Player implements IPlayer {
     }
 
 
+    private Move chosenMove(IGameState state){
+        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+
+        Move chosenMove;
+
+        return Move.Rock;
+    }
+
+
     /**
      * Decides the next move for the bot...
      *
@@ -79,9 +88,9 @@ public class Player implements IPlayer {
             if (rando < rockPercentage) {
                 return Move.Paper;
             } else if (rando < rockPercentage + paperPercentage) {
-                return Move.Rock;
-            } else {
                 return Move.Scissor;
+            } else {
+                return Move.Rock;
             }
         }  else {
             return randomMove();
