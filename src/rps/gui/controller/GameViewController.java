@@ -41,6 +41,9 @@ public class GameViewController implements Initializable {
 
     private IPlayer bot;
     private GameManager ge;
+    private Image imageRock = new Image("rps/gui/Images/boulder_png_by_davidrabinstock_dbl9pdg-pre.png");
+    private Image imagePaper = new Image("rps/gui/Images/pngtree-torn-notebook-paper-white-coil-png-image_5317122.png");
+    private Image imageScissor = new Image("rps/gui/Images/scissors_PNG15.png");
 
     /**
      * Initializes the controller class.
@@ -83,6 +86,7 @@ public class GameViewController implements Initializable {
         Image image = new Image("rps/gui/Images/scissors_PNG15.png");
         imgPlayer.setImage(image);
         playGame(chosenMove);
+
     }
 
     public Move getMove(){
@@ -96,6 +100,7 @@ public class GameViewController implements Initializable {
     public void playGame(Move chosenMove){
         Result result = ge.playRound(chosenMove);
         String resultString = getResultAsString(result);
+        changeBotImg(result);
         System.out.println(resultString);
         if (result.getType() == ResultType.Win && result.getWinnerPlayer().getPlayerType() == PlayerType.AI) {
             botWins++;
@@ -109,13 +114,7 @@ public class GameViewController implements Initializable {
     private String getRandomBotName() {
         String[] botNames = new String[] {
                 "R2D2",
-                "Mr. Data",
-                "3PO",
-                "Bender",
-                "Marvin the Paranoid Android",
-                "Bishop",
-                "Robot B-9",
-                "HAL"
+                "R2D2"
         };
         int randomNumber = new Random().nextInt(botNames.length - 1);
         return botNames[randomNumber];
@@ -128,5 +127,32 @@ public class GameViewController implements Initializable {
                 " (" + result.getWinnerMove() + ") " +
                 statusText + result.getLoserPlayer().getPlayerName() +
                 " (" + result.getLoserMove() + ")!";
+    }
+
+
+    public void changeBotImg(Result result){
+        if(result.getWinnerPlayer().getPlayerName() == "R2D2"){
+            if (result.getWinnerMove() == Move.Rock){
+                imgBot.setImage(imageRock);
+            }
+            else if (result.getWinnerMove() == Move.Paper){
+                imgBot.setImage(imagePaper);
+            } else if (result.getWinnerMove() == Move.Scissor) {
+                imgBot.setImage(imageScissor);
+            }
+        } else if (result.getLoserPlayer().getPlayerName() == "R2D2") {
+            if (result.getLoserMove() == Move.Rock){
+                imgBot.setImage(imageRock);
+            }
+            else if (result.getLoserMove() == Move.Paper){
+                imgBot.setImage(imagePaper);
+            } else if (result.getLoserMove() == Move.Scissor) {
+                imgBot.setImage(imageScissor);
+            }
+        }
+        else {
+            imgBot.setImage(imgPlayer.getImage());
+        }
+
     }
 }
