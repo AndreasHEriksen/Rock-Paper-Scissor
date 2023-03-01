@@ -83,9 +83,10 @@ public class Player implements IPlayer {
             } else {
                 return Move.Scissor;
             }
-        } else {
+        }  else {
             return randomMove();
         }
+
     }
 
     private void roundLostCounter(ArrayList<Result> results) {
