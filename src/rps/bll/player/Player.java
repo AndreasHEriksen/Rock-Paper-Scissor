@@ -64,7 +64,9 @@ public class Player implements IPlayer {
         // Count the number of times the human player has chosen each move in the last two rounds
         int rockCount = 0;
         int paperCount = 0;
-        
+        if(results.size() > 100){
+            results.subList(0, 50).clear();
+        }
         for (int i = 0; i < results.size(); i++) {
             Result result = results.get(i);
             //PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
