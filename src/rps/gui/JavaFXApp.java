@@ -26,9 +26,9 @@ public class JavaFXApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Font customFont = Font.loadFont("view/font/Minecraftia.ttf", 12);
+        //Font customFont = Font.loadFont("view/font/Minecraftia.ttf", 12);
         Parent root = FXMLLoader.load(getClass().getResource("view/GameView.fxml"));
-        root.getStylesheets().add(getClass().getResource("/rps/gui/view/GameViewCSS.css").toExternalForm());
+        //root.getStylesheets().add(getClass().getResource("/rps/gui/view/GameViewCSS.css").toExternalForm());
         stage.setTitle("Welcome to the not-implemented Rock-Paper-Scissor game!");
         stage.setScene(new Scene(root));
         stage.show();

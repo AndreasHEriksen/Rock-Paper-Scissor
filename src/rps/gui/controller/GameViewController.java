@@ -31,8 +31,6 @@ public class GameViewController implements Initializable {
     @FXML private Text txtBotWins;
     @FXML
     private Text txtPlayerWins;
-    public Label lblPlayerWins;
-    public Label lblBotWins;
     private boolean rockChosen;
     private boolean paperChosen;
     private boolean scissorChosen;
@@ -57,6 +55,7 @@ public class GameViewController implements Initializable {
     }
 
     public void handleChooseRock(ActionEvent actionEvent) {
+
         rockChosen = true;
 
         chosenMove = Move.Rock;

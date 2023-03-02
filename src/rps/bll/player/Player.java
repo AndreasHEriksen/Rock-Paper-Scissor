@@ -64,15 +64,16 @@ public class Player implements IPlayer {
         // Count the number of times the human player has chosen each move in the last two rounds
         int rockCount = 0;
         int paperCount = 0;
+        
         for (int i = 0; i < results.size(); i++) {
             Result result = results.get(i);
-            PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
-            if (getPlayerType() == loserChecker) {
+            //PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
+            //if (getPlayerType() == loserChecker) {
                 if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Rock)) {
                     rockCount++;
                 } else if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Paper)) {
                     paperCount++;
-                }
+            //    }
             }
         }
     return  calculateNextMove(rockCount, paperCount, results.size());
@@ -82,8 +83,8 @@ public class Player implements IPlayer {
         Random random = new Random();
         int rando = random.nextInt(1, 100);
         if (size > 10) {
-            int rockPercentage = 100 / rounds * rockCount;
-            int paperPercentage = 100 / rounds * paperCount;
+            double rockPercentage = 100 / rounds * rockCount;
+            double paperPercentage = 100 / rounds * paperCount;
 
             if (rando < rockPercentage) {
                 return Move.Paper;
