@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@font-face {
+    src: url("font/Minecraftia.ttf");
+    -fx-font-family: 'Minecraftia', cursive;
+}
+
+AnchorPane{
+    -fx-font-family: 'Minecraftia', cursive;
+}
 
 .background{
     -fx-background-image: url("https://i.gifer.com/NzP7.gif");
@@ -6,7 +13,6 @@
 }
 
 .fontChange{
-    -fx-font-family: 'Concert One', cursive;
     -fx-font-size: 20;
     -fx-fill: black;
     -fx-stroke: white;
