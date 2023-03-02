@@ -7,7 +7,6 @@
     src: url("font/Minecraftia.ttf");
 }
 .fontChange{
-    src: url("font/Minecraftia.ttf");
     -fx-font-family: 'MinecraftiaRegular';
     -fx-font-weight: normal;
     -fx-font-style: normal;
