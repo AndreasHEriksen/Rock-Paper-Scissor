@@ -13,7 +13,7 @@
       <ImageView fx:id="imgBot" fitHeight="250.0" fitWidth="300.0" layoutX="532.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="2.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleChooseRock" stylesheets="@GameViewCSS.css">
          <graphic>
-            <ImageView fitHeight="119.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="119.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                <image>
                   <Image url="@../Images/stone.png" />
                </image>
@@ -21,7 +21,7 @@
          </graphic></Button>
       <Button layoutX="111.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleChoosePaper" prefHeight="114.0" prefWidth="132.0" stylesheets="@GameViewCSS.css">
          <graphic>
-            <ImageView fitHeight="116.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="116.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                <image>
                   <Image url="@../Images/paperIcon.png" />
                </image>
@@ -29,7 +29,7 @@
          </graphic></Button>
       <Button layoutX="216.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleChooseScissor" prefHeight="136.0" prefWidth="147.0" stylesheets="@GameViewCSS.css">
          <graphic>
-            <ImageView fitHeight="114.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="114.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
                <image>
                   <Image url="@../Images/shear.png" />
                </image>
