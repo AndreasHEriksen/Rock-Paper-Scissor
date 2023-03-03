@@ -79,7 +79,15 @@ public class Player implements IPlayer {
         // Calculate percentages and return a random move based on percentages
     return  calculateNextMove(rockCount, paperCount, results.size());
     }
-
+    
+    private void roundLostCounter(ArrayList<Result> results) {
+        rounds = 0;
+        for (Result result : results) {
+            if (result.getLoserPlayer().equals(this)) {
+                rounds++;
+            }
+        }
+    }
     private Move calculateNextMove(int rockCount, int paperCount, int size) {
         Random random = new Random();
         int rando = random.nextInt(1, 100);
@@ -99,15 +107,6 @@ public class Player implements IPlayer {
             return randomMove();
         }
 
-    }
-
-    private void roundLostCounter(ArrayList<Result> results) {
-        rounds = 0;
-        for (Result result : results) {
-            if (result.getLoserPlayer().equals(this)) {
-                rounds++;
-            }
-        }
     }
 
     private Move randomMove() {
