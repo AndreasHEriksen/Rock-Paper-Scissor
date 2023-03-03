@@ -60,11 +60,12 @@ public class Player implements IPlayer {
     @Override
     public Move doMove(IGameState state) {
         ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
+        // Counts how many of the rounds the bot lost.
         roundLostCounter(results);
-        // Count the number of times the human player has chosen each move in the last two rounds
+
         int rockCount = 0;
         int paperCount = 0;
-        if(results.size() > 100){ // Clears result list so it only shows the 50+ > 100 rounds.
+        if(results.size() > 100){ // Clears result list, so it only shows the 50+ > 100 rounds.
             results.subList(0, 50).clear();
         }
         for (int i = 0; i < results.size(); i++) {
@@ -75,13 +76,15 @@ public class Player implements IPlayer {
                     paperCount++;
             }
         }
-    return  calculateNextMove(rockCount, paperCount, results.size()); // Calculate percentages and return calculated random
+        // Calculate percentages and return a random move based on percentages
+    return  calculateNextMove(rockCount, paperCount, results.size());
     }
 
     private Move calculateNextMove(int rockCount, int paperCount, int size) {
         Random random = new Random();
         int rando = random.nextInt(1, 100);
-        if (size > 10) {                                 // Checks if results.size < 10 as it needs percentages to counter opponent
+        // Checks if results.size < 10 as it needs percentages to counter opponent
+        if (size > 10) {
             double rockPercentage = 100 / rounds * rockCount;
             double paperPercentage = 100 / rounds * paperCount;
 
