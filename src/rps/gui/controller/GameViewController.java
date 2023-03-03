@@ -83,10 +83,6 @@ public class GameViewController implements Initializable {
 
     }
 
-    public Move getMove(){
-
-        return chosenMove;
-    }
 
     private int botWins = 0;
     private int playerWins = 0;

@@ -42,14 +42,6 @@ public class Player implements IPlayer {
     }
 
 
-    private Move chosenMove(IGameState state){
-        ArrayList<Result> results = (ArrayList<Result>) state.getHistoricResults();
-
-        Move chosenMove;
-
-        return Move.Rock;
-    }
-
 
     /**
      * Decides the next move for the bot...
