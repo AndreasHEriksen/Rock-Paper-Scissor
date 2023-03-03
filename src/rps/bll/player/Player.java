@@ -64,7 +64,7 @@ public class Player implements IPlayer {
         // Count the number of times the human player has chosen each move in the last two rounds
         int rockCount = 0;
         int paperCount = 0;
-        if(results.size() > 100){
+        if(results.size() > 100){ // Clears result list so it only shows the 50+ > 100 rounds.
             results.subList(0, 50).clear();
         }
         for (int i = 0; i < results.size(); i++) {
@@ -75,13 +75,13 @@ public class Player implements IPlayer {
                     paperCount++;
             }
         }
-    return  calculateNextMove(rockCount, paperCount, results.size());
+    return  calculateNextMove(rockCount, paperCount, results.size()); // Calculate percentages and return calculated random
     }
 
     private Move calculateNextMove(int rockCount, int paperCount, int size) {
         Random random = new Random();
         int rando = random.nextInt(1, 100);
-        if (size > 10) {
+        if (size > 10) {                                 // Checks if results.size < 10 as it needs percentages to counter opponent
             double rockPercentage = 100 / rounds * rockCount;
             double paperPercentage = 100 / rounds * paperCount;
 
