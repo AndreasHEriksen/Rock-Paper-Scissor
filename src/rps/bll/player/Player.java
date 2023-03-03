@@ -69,13 +69,10 @@ public class Player implements IPlayer {
         }
         for (int i = 0; i < results.size(); i++) {
             Result result = results.get(i);
-            //PlayerType loserChecker = result.getLoserPlayer().getPlayerType();
-            //if (getPlayerType() == loserChecker) {
                 if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Rock)) {
                     rockCount++;
                 } else if (result.getLoserPlayer().equals(this) && result.getWinnerMove().equals(Move.Paper)) {
                     paperCount++;
-            //    }
             }
         }
     return  calculateNextMove(rockCount, paperCount, results.size());
